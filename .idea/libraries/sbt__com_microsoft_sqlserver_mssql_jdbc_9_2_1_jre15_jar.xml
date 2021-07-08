@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="sbt: com.microsoft.sqlserver:mssql-jdbc:9.2.1.jre15:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/9.2.1.jre15/mssql-jdbc-9.2.1.jre15.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/9.2.1.jre15/mssql-jdbc-9.2.1.jre15-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/9.2.1.jre15/mssql-jdbc-9.2.1.jre15-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
