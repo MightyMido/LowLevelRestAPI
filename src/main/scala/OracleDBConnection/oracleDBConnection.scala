@@ -1,6 +1,7 @@
 package OracleDBConnection
 
-import java.sql.{CallableStatement, DriverManager, ResultSet, Statement, Types}
+
+import java.sql.{CallableStatement, Connection, DriverManager, ResultSet, Statement, Types}
 
 
 object oracleDBConnection {
@@ -8,7 +9,9 @@ object oracleDBConnection {
   final val url = "jdbc:oracle:thin:@192.168.122.1:1521:orclcdb"
   final val username = "testDB"
   final val password = "Ma1234"
-  final val connection = DriverManager.getConnection(url, username, password)
+  case class connection(url:String,username:String,password:String)
+  {def create_connection:Connection = DriverManager.getConnection(url, username, password)}
+  val cxnn = connection(url,username,password)
   case class total_Terminal (terminal_key:String , guild_code:String , guild_desc:String , mega_guild_desc:String)
   case class terminal(terminalKey:String , guild_Code:String)
 }
@@ -36,6 +39,7 @@ class oracleDBConnection
     {
       val terminal_string = terminalKeyList.mkString("','")
       val query = s"select trmrchtyp, terminalkey from terminals_tbl where terminalkey in ('$terminal_string')"
+      val connection = cxnn.create_connection
       val resultSet = connection.createStatement().executeQuery(query)
       val results = getResults(resultSet)
       connection.close()
@@ -47,6 +51,7 @@ class oracleDBConnection
       val l = InputList.length
       val q = List.fill(number_of_elements)("?")
       val sql = s"{call $ProcName(${q.mkString(",")})}"
+      val connection = cxnn.create_connection
       val callableStatement = connection.prepareCall(sql)
       for (i <- 1 to l)
       {

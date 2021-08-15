@@ -8,13 +8,12 @@ import akka.stream.ActorMaterializer
 import akka.stream.scaladsl.{Flow, Sink}
 import scala.concurrent.Future
 
-
 import OracleDBConnection.{oracleDBConnection}
 
 object PFM_Low_level_API extends App {
   val V:oracleDBConnection = new oracleDBConnection
   val T = V.execute_sql_query(List("000096411017", "000096461008", "000097211017"))
-  println(T)
+  val n = V.get_terminal_info("00009641","1017")
 
   //  println("ready to start masoud lets go")
 //  implicit val system = ActorSystem("PFMLowLevelAPI")
